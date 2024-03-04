@@ -1,24 +1,41 @@
-# README
+# Base Rails application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Normal development flow
 
-Things you may want to cover:
+1. Start the server
 
-* Ruby version
+   ./bin/dev
 
-* System dependencies
+2. Open the browser and go to `http://localhost:3000`
 
-* Configuration
+3. Watch the tests
 
-* Database creation
+   bundle exec guard
 
-* Database initialization
+## Initial setup
 
-* How to run the test suite
+1. Install psql if you haven't already
 
-* Services (job queues, cache servers, search engines, etc.)
+   brew install postgresql
+   brew services start postgresql@14
 
-* Deployment instructions
+2. Install rvm if you haven't already
 
-* ...
+   \curl -sSL https://get.rvm.io | bash -s stable
+
+3. Install the correct version of ruby
+
+   rvm install $(cat .ruby-version)
+
+4. Install bundler
+
+   gem install bundler
+
+5. Install the gems
+
+   cd mybase
+   bundle install
+
+6. Create the database
+
+   rails db:create db:migrate db:seed

@@ -61,6 +61,10 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Use guard for TDD flow
+  gem "guard"
+  gem "guard-minitest"
 end
 
 group :test do
