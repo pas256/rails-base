@@ -39,3 +39,7 @@
 6. Create the database
 
    rails db:create db:migrate db:seed
+
+7. Install commit hooks
+
+   overcommit --install
