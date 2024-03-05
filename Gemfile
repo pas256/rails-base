@@ -49,6 +49,8 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'auto_strip_attributes', '~> 2.6' # Automatically strip spaces from model attributes
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
@@ -71,8 +73,8 @@ group :development do
   gem 'overcommit' # Enforce Rubocup code style before committinng
   gem 'rubocop' # Code style enforcer
   gem 'rubocop-capybara' # Code style for Capybara
+  gem 'rubocop-performance' # Code style for performance
   gem 'rubocop-rails' # Code style for Rails
-  # gem 'rubocop-performance' # Code style for performance
 end
 
 group :test do
