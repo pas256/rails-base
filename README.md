@@ -21,32 +21,37 @@ A base Ruby on Rails application trying to follow the modern conventions.
         brew install postgresql
         brew services start postgresql@14
 
-2.  Install `rvm` if you haven't already
+1.  Install `rvm` if you haven't already
 
         \curl -sSL https://get.rvm.io | bash -s stable
 
-3.  Install the version of ruby this project uses
+1.  Install the version of ruby this project uses
 
         rvm install $(cat .ruby-version)
 
-4.  Once ruby is installed, you can then install bundler
+1.  Once ruby is installed, you can then install bundler
 
         gem install bundler
 
-5.  Install the gems/dependencies for this project
+1.  Install the gems/dependencies for this project
 
         cd mybase
         bundle install
 
-6.  Create the database
+1.  Install NodeJS if you haven't already, and then install the node dependencies (which is just `mjml` for emails)
+
+        brew install node
+        npm install
+
+1.  Create the database
 
         rails db:create db:migrate db:seed
 
-7.  Install commit hooks
+1.  Install commit hooks
 
         overcommit --install
 
-8.  Copy and set the environment variables. Each variable has instructions to follow.
+1.  Copy and set the environment variables. Each variable has instructions to follow.
 
         cp .env.template .env
 
