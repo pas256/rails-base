@@ -55,6 +55,7 @@ gem 'mjml-rails' # Use MJML for emails
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'brakeman' # Static analysis security vulnerability scanner
   gem 'debug', platforms: %i[mri windows]
   gem 'dotenv', '~> 3.1' # Loads environment variables from .env into ENV
   gem 'rails-controller-testing' # Test controllers in isolation

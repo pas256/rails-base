@@ -1,0 +1,28 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Authentication",
+      "warning_code": 10,
+      "fingerprint": "d19c61f316f761034ef6e86ec131410339d39a6e8ecd28e18e289b77b4590cf4",
+      "check_name": "SkipBeforeFilter",
+      "message": "List specific actions (`:only => [..]`) when skipping authentication",
+      "file": "app/controllers/sessions_controller.rb",
+      "line": 5,
+      "link": "https://brakemanscanner.org/docs/warning_types/authentication_whitelist",
+      "code": "skip_before_action(:authenticate_user!, :except => ([:test]))",
+      "render_path": null,
+      "location": {
+        "type": "controller",
+        "controller": "SessionsController"
+      },
+      "user_input": null,
+      "confidence": "Medium",
+      "cwe_id": [
+        287
+      ],
+      "note": "This is listing specific actions to skip authentication, but doing so with :except rather than :only"
+    }
+  ],
+  "updated": "2024-03-13 22:22:03 -0700",
+  "brakeman_version": "6.1.2"
+}
