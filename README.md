@@ -4,51 +4,51 @@ A base Ruby on Rails application trying to follow the modern conventions.
 
 ## Normal development flow
 
-1. Start the server
+1.  Start the server
 
-   ./bin/dev
+        ./bin/dev
 
-2. Open the browser and go to `http://localhost:3000`
+2.  Open the browser and go to `http://localhost:3000`
 
-3. Watch the tests
+3.  Watch the tests
 
-   bundle exec guard
+        bundle exec guard
 
 ## Initial setup
 
-1. Install PostgreSQL if you haven't already
+1.  Install PostgreSQL if you haven't already
 
-   brew install postgresql
-   brew services start postgresql@14
+        brew install postgresql
+        brew services start postgresql@14
 
-2. Install `rvm` if you haven't already
+2.  Install `rvm` if you haven't already
 
-   \curl -sSL https://get.rvm.io | bash -s stable
+        \curl -sSL https://get.rvm.io | bash -s stable
 
-3. Install the version of ruby this project uses
+3.  Install the version of ruby this project uses
 
-   rvm install $(cat .ruby-version)
+        rvm install $(cat .ruby-version)
 
-4. Once ruby is installed, you can then install bundler
+4.  Once ruby is installed, you can then install bundler
 
-   gem install bundler
+        gem install bundler
 
-5. Install the gems/dependencies for this project
+5.  Install the gems/dependencies for this project
 
-   cd mybase
-   bundle install
+        cd mybase
+        bundle install
 
-6. Create the database
+6.  Create the database
 
-   rails db:create db:migrate db:seed
+        rails db:create db:migrate db:seed
 
-7. Install commit hooks
+7.  Install commit hooks
 
-   overcommit --install
+        overcommit --install
 
-8. Copy and set the environment variables. Each variable has instructions to follow.
+8.  Copy and set the environment variables. Each variable has instructions to follow.
 
-   cp .env.template .env
+        cp .env.template .env
 
 Now you can use the normal development flow documented above.
 
