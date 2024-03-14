@@ -17,17 +17,18 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:11-alpine
+        image: postgres:16-alpine
         ports:
           - "5432:5432"
         env:
           POSTGRES_DB: mybase_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
+        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
       redis:
         image: redis:alpine
         ports: ["6379:6379"]
-        options: --entrypoint redis-server
+        options: --entrypoint redis-server --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/mybase_test"
@@ -36,26 +37,32 @@ jobs:
       REDIS_URL: redis://localhost:6379/0
       SECRET_KEY_BASE: b49d2311335f06f8b9be0c8f3bfe0c98250363f6bb9f133c421075c5a7428dbdef40700437fef80be98165d50240df0c3e7cc66d71cfcdd3f6b69729d0f64764
     steps:
+      - name: Install packages
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable
+
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Use Node.js 20.x
+
+      - name: Set up Node.js 20.x
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
           cache: 'npm'
+
       - name: Install Node dependencies (mjml for email)
         run: npm install
-      # Add or replace dependency steps here
-      - name: Install Ruby and gems
+
+      - name: Set up Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: .ruby-version
           bundler-cache: true
-      # Add or replace database setup steps here
-      - name: Set up database schema
-        run: bin/rails db:schema:load
-      # Add or replace test runners here
+
+      - name: Set up database
+        run: bin/rails db:setup
+
       - name: Run tests
-        run: bin/rake
+        run: bin/rails test test:system
 
   lint:
     runs-on: ubuntu-latest
