@@ -30,7 +30,7 @@ module MagicLink
     private
 
     def mv
-      secret = Rails.application.credentials.secret_key_base # TODO: use a different secret specifically for magic links
+      secret = ENV.fetch('MAGIC_LINK_SECRET_KEY')
       ActiveSupport::MessageVerifier.new(secret, url_safe: true)
     end
   end
