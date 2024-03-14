@@ -14,6 +14,7 @@ on:
 
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -27,7 +28,8 @@ jobs:
         options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
       redis:
         image: redis:alpine
-        ports: ["6379:6379"]
+        ports:
+          - "6379:6379"
         options: --entrypoint redis-server --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
     env:
       RAILS_ENV: test
@@ -43,7 +45,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js 20.x
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
@@ -62,18 +64,26 @@ jobs:
         run: bin/rails db:setup
 
       - name: Run tests
-        run: bin/rails test test:system
+        run: bin/rails test
+
+      - name: Run system tests
+        run: bin/rails test:system
 
   lint:
+    name: Lint and scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Install Ruby and gems
+
+      - name: Set up Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: .ruby-version
           bundler-cache: true
-      - name: Security audit application code
-        run: bundle exec brakeman -q -w2
-      - name: Lint Ruby files
+
+      - name: Lint code for consistent style
         run: bundle exec rubocop --parallel
+
+      - name: Scan for security vulnerabilities
+        run: bundle exec brakeman -q -w2
