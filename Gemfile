@@ -59,6 +59,10 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'dotenv', '~> 3.1' # Loads environment variables from .env into ENV
   gem 'rails-controller-testing' # Test controllers in isolation
+  gem 'rubocop' # Code style enforcer
+  gem 'rubocop-capybara' # Code style for Capybara
+  gem 'rubocop-performance' # Code style for performance
+  gem 'rubocop-rails' # Code style for Rails
 end
 
 group :development do
@@ -71,17 +75,10 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  # Use guard for TDD flow
-  gem 'guard'
-  gem 'guard-minitest'
-
-  gem 'overcommit' # Enforce Rubocup code style before committinng
-  gem 'rubocop' # Code style enforcer
-  gem 'rubocop-capybara' # Code style for Capybara
-  gem 'rubocop-performance' # Code style for performance
-  gem 'rubocop-rails' # Code style for Rails
-
+  gem 'guard' # Use guard for TDD flow
+  gem 'guard-minitest' # Use minitest until I get too frustrated and switch to RSpec
   gem 'letter_opener' # Preview mail in the browser instead of sending
+  gem 'overcommit' # Enforce Rubocup code style before committinng
 end
 
 group :test do
