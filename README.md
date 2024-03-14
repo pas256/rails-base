@@ -1,6 +1,8 @@
 # Base Rails application
 
-# Normal development flow
+A base Ruby on Rails application trying to follow the modern conventions.
+
+## Normal development flow
 
 1. Start the server
 
