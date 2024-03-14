@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get 'magic/link' => 'sessions#verify', as: :sessions_verify
   get 'sign-out' => 'sessions#destroy', as: :sessions_destroy
   get 'session/test' => 'sessions#test', as: :sessions_test
+
+  mount Debugbar::Engine => Debugbar.config.prefix if defined? Debugbar
 end
