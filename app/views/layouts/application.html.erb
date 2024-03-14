@@ -17,6 +17,8 @@
       <%= yield %>
     </main>
 
-    <%= debugbar_javascript %>
+    <% if defined? Debugbar %>
+      <%= debugbar_javascript %>
+    <% end %>
   </body>
 </html>
