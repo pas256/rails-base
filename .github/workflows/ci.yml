@@ -29,6 +29,8 @@ jobs:
       DATABASE_URL: "postgres://rails:password@localhost:5432/mybase_test"
       DOMAIN: 127.0.0.1:3000
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Use Node.js 20.x
         uses: actions/setup-node@v3
         with:
@@ -36,8 +38,6 @@ jobs:
           cache: 'npm'
       - name: Install Node dependencies (mjml for email)
         run: npm install
-      - name: Checkout code
-        uses: actions/checkout@v3
       # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
