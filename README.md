@@ -57,9 +57,11 @@ A base Ruby on Rails application trying to follow the modern conventions.
 
 Now you can use the normal development flow documented above.
 
-## Environment variables
+## Environment variables, secrets and credentials
 
 Environment variables are stored in the `.env` file. This is not checked into source control on purpose as some environment variables are secrets (like API keys). You can copy the `.env.template` file to `.env` and set the values accordingly. In production, they are set by the server.
+
+Rails has whole [secrets credentials management methodology](https://guides.rubyonrails.org/security.html#custom-credentials) that could have been used as an alternative. However, even with the introduction of environment-specific credentials via `rails credentials:edit --environment production`, it is still not a complete solution. The `database.yml` for example still expects to get the database password from an environment variable, and as implemented today, the same `master.key` is used for all environments. This means that if the `master.key` is compromised, all environments are compromised. There are clunky workarounds to use environment specific master keys which we could live with, but it doesn't solve another problem this method has which the inability to merge encrypted credentials. This means that if you have a team of developers, you can't easily merge changes to the `credentials.yml.enc` file. So, at least for now, we are not using "the rails way" for credentials and rely on old fashioned environment variables for everything.
 
 ### Adding a new environment variable
 

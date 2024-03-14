@@ -3,6 +3,8 @@
 # Require the following environment variables to be set in all environments
 required_env_vars = %w[
   DOMAIN
+  MAGIC_LINK_SECRET_KEY
+  SECRET_KEY_BASE
 ]
 
 # Require the following environment variables to be set in development environments

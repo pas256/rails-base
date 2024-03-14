@@ -28,6 +28,8 @@ jobs:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/mybase_test"
       DOMAIN: 127.0.0.1:3000
+      MAGIC_LINK_SECRET_KEY: 8ab2bb212ed03da4f489ae3b14726df97117b224b9003da191396c446661c1efe209bcee17cdeacb01d9f7abfb9307b9eb122d71d38522bd65abbe9ba8df8940
+      SECRET_KEY_BASE: b49d2311335f06f8b9be0c8f3bfe0c98250363f6bb9f133c421075c5a7428dbdef40700437fef80be98165d50240df0c3e7cc66d71cfcdd3f6b69729d0f64764
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
