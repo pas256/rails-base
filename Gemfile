@@ -50,11 +50,14 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'auto_strip_attributes', '~> 2.6' # Automatically strip spaces from model attributes
+gem 'mjml-rails' # Use MJML for emails
+# gem 'simple_form', '~> 5.1.0' # Form builder with flexible DSL
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
   gem 'dotenv', '~> 3.1' # Loads environment variables from .env into ENV
+  gem 'rails-controller-testing' # Test controllers in isolation
 end
 
 group :development do
@@ -76,6 +79,8 @@ group :development do
   gem 'rubocop-capybara' # Code style for Capybara
   gem 'rubocop-performance' # Code style for performance
   gem 'rubocop-rails' # Code style for Rails
+
+  gem 'letter_opener' # Preview mail in the browser instead of sending
 end
 
 group :test do

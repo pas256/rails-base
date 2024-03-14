@@ -9,4 +9,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'home#index'
+
+  # Magic link sign in/up/out and session management
+  get 'welcome' => 'sessions#new', as: :sessions_new
+  post 'sessions/create' => 'sessions#create', as: :sessions_create
+  get 'magic/email' => 'sessions#email', as: :sessions_email
+  get 'magic/link' => 'sessions#verify', as: :sessions_verify
+  get 'sign-out' => 'sessions#destroy', as: :sessions_destroy
+  get 'session/test' => 'sessions#test', as: :sessions_test
 end

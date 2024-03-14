@@ -1,0 +1,61 @@
+<%# For documentation reference, see: https://documentation.mjml.io/#components %>
+<mjml lang="en">
+  <mj-head>
+    <mj-preview><%= @preview_text %></mj-preview>
+    <mj-font name="Inter" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900"></mj-font>
+    <mj-attributes>
+      <mj-all font-family="Inter, Helvetica, Arial, sans-serif" color="#0f1729"></mj-all>
+    </mj-attributes>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark">
+      <meta name="supported-color-schemes" content="light dark">
+    </mj-raw>
+
+    <mj-style>
+      <%# Dark mode style. See: https://github.com/mjmlio/mjml/issues/2010 %>
+      <%# Add `class="dark_img"` to any dark mode images you need to swap out. %>
+      :root {
+        color-scheme: light dark;
+        supported-color-schemes: light dark;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .darkmode {
+          background-color: #0f1729 !important;
+        }
+
+        .light_img {
+          display: none !important;
+        }
+
+
+        .dark_img {
+          display: block !important;
+        }
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body css-class="darkmode" background-color="#f8fafc">
+    <%# TODO See if this wrapper does the trick %>
+    <%# If not: https://www.hteumeuleu.com/2021/fixing-gmail-dark-mode-css-blend-modes/ %>
+    <mj-wrapper background-color="#f8fafc" padding="50px 30px">
+      <mj-section>
+        <mj-column width="100%">
+          <mj-text align="center">TODO: Insert logo here</mj-text>
+        </mj-column>
+      </mj-section>
+
+      <%= yield %>
+
+      <mj-section padding="12px 4px 16px 4px">
+        <mj-column>
+          <mj-text align="center" color="#94a3b8" font-size="11px">
+            This message was sent to <%= @email %>.<br />
+            If you have any comments or questions, please reply to this email and let us know.<br />
+            If you no longer wish to receive these emails, you can manage your email preferences or unsubscribe.
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

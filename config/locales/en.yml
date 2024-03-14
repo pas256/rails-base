@@ -28,5 +28,15 @@
 #       enabled: "ON"
 
 en:
+  sessions:
+    sign_in: Sign in
+    sign_out: Sign out
+    signed_in_as: Signed in as %{email}
+    invalid_magic_link: "Invalid or expired magic link"
+    new:
+      welcome: "Welcome to the app!"
+      submit: Send magic link to grant access
+    email:
+      title: "Check your emailz"
   user_mailer:
     subject: Sign in magic link

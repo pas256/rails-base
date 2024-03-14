@@ -1,1 +1,5 @@
 <div class="font-bold">Hello!</div>
+
+<% if !user_signed_in? %>
+  <%= link_to 'Get in here', sessions_new_path %>
+<% end %>

@@ -19,6 +19,9 @@ module Mybase
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    # Add the `app/utils` directory to the load path
+    config.autoload_paths += %W[#{config.root}/app/utils]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -29,5 +32,11 @@ module Mybase
 
     # Domain for URLs in emails
     config.action_mailer.default_url_options = { host: ENV.fetch('DOMAIN', nil) }
+
+    # TODO: For simple_form To avoid the error:
+    #     Could not find "_form.html.tailwindcss" in any of your source paths.
+    # use the workaround documented in https://github.com/rails/tailwindcss-rails/issues/246
+    # and overwrite what tailwindcss-rails sets
+    # config.generators.template_engine :erb
   end
 end

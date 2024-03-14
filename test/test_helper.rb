@@ -13,5 +13,9 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def sign_in_as(email)
+      token = MagicLink.generate_token(email)
+      get sessions_verify_url(token:)
+    end
   end
 end

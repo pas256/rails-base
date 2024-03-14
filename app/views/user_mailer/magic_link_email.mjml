@@ -1,0 +1,15 @@
+<mj-section>
+  <mj-column width="100%">
+    <mj-text font-weight="500">Hi there,</mj-text>
+    <mj-text>To sign in, please click this magic link:</mj-text>
+    <mj-button
+      align="center"
+      border-radius="8px"
+      inner-padding="16px 48px"
+      background-color="#4338ca"
+      color="#f8fafc"
+      href="<%= @url %>"
+    >Magic link to sign in</mj-button>
+    <mj-text padding-top="24px">Thanks and have a great day!</mj-text>
+  </mj-column>
+</mj-section>
